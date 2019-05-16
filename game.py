@@ -63,9 +63,9 @@ class Game:
         return new
 
     def get_score_of_word(self, character):
-        for x in frequency.keys():
-            if character == x:
-                return frequency[x]
+        for i in frequency.keys():
+            if character == i:
+                return frequency[i]
 
     def get_value_of_hidden_chars(self):
         response = []
