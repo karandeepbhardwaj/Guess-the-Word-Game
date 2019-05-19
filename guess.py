@@ -110,8 +110,7 @@ Guess the word:\t%s
                                 each game for each word.
         :return: no returns.
         """
-        print("Game\t   Word\tStatus\tBad Guesses\tMissed Letters\tScore")
-        print("\n----\t----\t------\t-----------\t--------------\t-----\n")
+        print("Game\tWord\tStatus\tBad Guesses\tMissed Letters\tScore")
         for game in gameList:
             print(game.game_number + 1, "\t", game.word, "\t", game.status, "\t",
                   game.bad_word_guesses, "\t", game.missed_letter, "\t", game.score)

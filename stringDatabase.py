@@ -3,8 +3,7 @@ import random
 
 class StringDatabase:
     """StringDatabase : This class is the input output handling class, the main purpose is to take word from the
-                        text file, store it in required data structure which in this code's case is string
-    """
+                        text file, store it in required data structure which in this code's case is string"""
 
     def __init__(self):
         """The __init__ method: This method is similar to constructors in C++ and Java.
