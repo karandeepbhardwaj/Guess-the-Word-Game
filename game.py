@@ -86,7 +86,7 @@ class Game:
         """
         num_correct = 0
         if guessed_char in self.local_char:
-            print("You have already guessed this word")
+            print("You have already guessed this letter")
             return
         for i in range(len(self.word)):
             if guessed_char == self.word[i]:
@@ -100,12 +100,17 @@ class Game:
 
         if num_correct == 0:
             self.missed_letter += 1
-
+            print("""
+#############################
+#     Incorrect Letter      #
+#############################""")
         if self.total_letters == 4:
             self.status = "Success"
             self.game_still_going = False
-            print("You guessed the word!")
-        print(self.letter_give_count)
+            print("""
+#############################
+#   You guessed the word    #
+#############################""")
         self.letter_give_count += 1
 
     def get_printable_string(self):
@@ -165,19 +170,14 @@ class Game:
                             rules. Stores the value in the score variable.
         :return: no return.
         """
-
         temp_score = self.score
 
         if self.status == "Gave Up":
             return self.get_value_of_not_found_chars() * -1
-        print(temp_score)
-        print(self.letter_give_count)
         if self.letter_give_count > 0:
             temp_score /= self.letter_give_count
 
-        print(temp_score)
         if self.bad_word_guesses > 0:
             for x in range(self.bad_word_guesses):
                 temp_score = temp_score * 0.90
-
         return temp_score
