@@ -78,9 +78,11 @@ Guess the word:\t%s
                 response = game_object.guess_the_word(guessed_word)
                 if response == "Y":
                     print(correct_guess_message)
+                    print(game_object.score)
                     pass
                     # update game data
                 elif response == "N":
+                    print(game_object.score)
                     print(incorrect_guess_message)
                     pass
 

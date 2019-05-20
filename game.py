@@ -62,7 +62,7 @@ class Game:
         if guessed_word == self.word:
             self.status = "Success"
             self.game_still_going = False
-            self.score = self.get_value_of_found_chars()
+            self.score += self.get_value_of_not_found_chars()
             return "Y"
         else:
             self.bad_word_guesses += 1
@@ -105,6 +105,7 @@ class Game:
             self.status = "Success"
             self.game_still_going = False
             print("You guessed the word!")
+        print(self.letter_give_count)
         self.letter_give_count += 1
 
     def get_printable_string(self):
@@ -169,10 +170,12 @@ class Game:
 
         if self.status == "Gave Up":
             return self.get_value_of_not_found_chars() * -1
-
+        print(temp_score)
+        print(self.letter_give_count)
         if self.letter_give_count > 0:
             temp_score /= self.letter_give_count
 
+        print(temp_score)
         if self.bad_word_guesses > 0:
             for x in range(self.bad_word_guesses):
                 temp_score = temp_score * 0.90
