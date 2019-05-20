@@ -37,7 +37,7 @@ class Game:
                                                         to know that the game has ended and start a new game by storing
                                                         previous games score."""
         self.game_number = game_number
-        self.word = "case"
+        self.word = StringDatabase().get_random()
         self.status = status
         self.bad_word_guesses = bad_word_guesses
         self.bed_letter_guesses = bad_letter_guesses
@@ -97,7 +97,11 @@ class Game:
                 self.local_char.append(guessed_char)
                 self.score += self.get_score_of_word(self.word[i])
         print("You found %d letter so far" % self.letter_found_count)
-
+        if num_correct > 0:
+            print("""
+#############################
+#     Correct Letter        #
+#############################""")
         if num_correct == 0:
             self.missed_letter += 1
             print("""
@@ -171,7 +175,6 @@ class Game:
         :return: no return.
         """
         temp_score = self.score
-
         if self.status == "Gave Up":
             return self.get_value_of_not_found_chars() * -1
         if self.letter_give_count > 0:

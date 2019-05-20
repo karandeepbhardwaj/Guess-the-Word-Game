@@ -64,14 +64,14 @@ class Guess:
                 gameList.append(game_object)
                 self.count_of_game = self.count_of_game + 1
                 game_object = Game(self.count_of_game)
-
+            print("Current Word:", game_object.word)
+            # If you want to know the word upfront, uncomment the above line of code
             print("""
-current word: %s
 Guess the word:\t%s
 --Options----------------------------------------------------
 + G = Guess,  T = tell me,  L for a letter  ,and Q for quit +
 -------------------------------------------------------------
-""" % (game_object.word, game_object.get_printable_string()))
+""" % game_object.get_printable_string())
             answer = input("So what would you like to do? (g/t/l/q)\n")
             if answer == "g" or answer == "G":
                 guessed_word = input("Make a guess: \n")
@@ -87,7 +87,10 @@ Guess the word:\t%s
                     pass
 
             if answer == "t" or answer == "T":
-                print("The word was :" + game_object.word)
+                print("""
+#############################
+#       Word was :%s      #
+#############################""" % game_object.word)
                 game_object.tell_me()
                 pass
 
@@ -112,12 +115,15 @@ Guess the word:\t%s
                                 each game for each word.
         :return: no returns.
         """
+        total_of_scores = 0.0
         print("Game\t Word\t Status\t\t Bad Guesses\t Missed Letters\t Score")
         print("----\t ----\t -------\t -----------\t --------------\t -----")
         for game in gameList:
             print(game.game_number + 1, " ", "\t", game.word, "\t", game.status, "\t",
                   game.bad_word_guesses, "          ", "\t", game.missed_letter, "\t\t\t\t",
                   "%0.2f" % game.final_score())
+            total_of_scores += game.final_score()
+        print("\nFinal Score:  %0.2f" % total_of_scores)
 
 
 g = Guess()
